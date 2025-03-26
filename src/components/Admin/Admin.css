@@ -1,0 +1,226 @@
+/* src/components/Admin/Admin.css */
+
+/* Base Admin Dashboard Styles */
+.admin-dashboard {
+    background: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .admin-header {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+  }
+  
+  .admin-header h1 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Tabs Navigation */
+  .admin-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .admin-tabs .tab {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    background: #e9ecef;
+    color: #495057;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .admin-tabs .tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  
+  /* Forms */
+  .admin-form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+  }
+  
+  .admin-form h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .admin-form input,
+  .admin-form select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+  }
+  
+  .admin-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1em;
+  }
+  
+  /* Tables */
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .admin-table th {
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
+  }
+  
+  /* User Info Elements */
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-name {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .user-email {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  /* Attendance Display */
+  .attendance-tracker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .attendance-bar {
+    width: 100px;
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .attendance-progress {
+    height: 100%;
+    background: var(--success);
+    transition: width 0.3s ease;
+  }
+  
+  .attendance-progress.warning {
+    background: var(--danger);
+  }
+  
+  .attendance-percent {
+    font-weight: 500;
+    color: var(--dark);
+  }
+  
+  /* Action Controls */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .btn-edit {
+    background: var(--secondary);
+    color: white;
+  }
+  
+  .btn-danger {
+    background: var(--danger);
+    color: white;
+  }
+  
+  /* Empty States */
+  .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: #f8f9fa;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .admin-header {
+      padding: 1.5rem;
+    }
+    
+    .admin-tabs {
+      flex-direction: column;
+    }
+    
+    .admin-tabs .tab {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .admin-table {
+      display: block;
+      overflow-x: auto;
+    }
+  
+    .user-info {
+      min-width: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-form {
+      padding: 1.5rem;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
