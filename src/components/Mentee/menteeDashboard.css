@@ -1,0 +1,98 @@
+/* Leave Application Button */
+/* Leave Application Button */
+.mentee-dashboard .leave-application-button .btn-primary {
+    background-color: #4b78a5 !important;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mentee-dashboard .leave-application-button .btn-primary:hover {
+    background-color: #627385 !important;
+}
+
+.btn-primary {
+    background-color: #6795c4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #04080c;
+}
+
+/* Table Styling */
+.leave-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.leave-table th,
+.leave-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+.leave-table th {
+    background-color: #3b5b7e;
+    color: white;
+    font-weight: bold;
+}
+
+.leave-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.leave-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* Error and Loading Messages */
+.alert.error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* General Styling for Mentee Dashboard */
+.mentee-dashboard h1,
+.mentee-dashboard h2,
+.mentee-dashboard h3 {
+    color: #007bff;
+}
+
+.dashboard-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+ul li:hover {
+    background-color: #e6e6e6;
+}

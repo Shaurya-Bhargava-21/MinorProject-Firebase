@@ -29,6 +29,14 @@ function LeaveApplicationForm() {
     fetchProfile();
   }, [currentUser]);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -72,8 +80,8 @@ function LeaveApplicationForm() {
     try {
       await submitLeaveApplication({
         menteeId: profile.id,
-        startDate: formData.startDate,
-        endDate: formData.endDate,
+        startDate: formatDate(formData.startDate),
+        endDate: formatDate(formData.endDate),
         reason: formData.reason,
       });
       navigate('/mentee/dashboard');
@@ -98,9 +106,7 @@ function LeaveApplicationForm() {
       <Navbar userName={currentUser?.name} userRole="Mentee" onLogout={logout} />
 
       <div className="container">
-        <button onClick={goBack} className="btn btn-back">
-          ← Back to Dashboard
-        </button>
+        <button onClick={goBack} className="btn btn-back">← Back to Dashboard</button>
 
         <div className="form-card">
           <h2>Apply for Leave</h2>
@@ -109,7 +115,7 @@ function LeaveApplicationForm() {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="startDate">From Date</label>
+              <label htmlFor="startDate">From Date (mm-dd-yyyy)</label>
               <input
                 type="date"
                 id="startDate"
@@ -122,7 +128,7 @@ function LeaveApplicationForm() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="endDate">To Date</label>
+              <label htmlFor="endDate">To Date (mm-dd-yyyy)</label>
               <input
                 type="date"
                 id="endDate"
@@ -148,21 +154,8 @@ function LeaveApplicationForm() {
             </div>
 
             <div className="form-actions">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={goBack}
-                disabled={isSubmitting}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit Application'}
-              </button>
+              <button type="button" className="btn btn-secondary" onClick={goBack} disabled={isSubmitting}>Cancel</button>
+              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? 'Submitting...' : 'Submit Application'}</button>
             </div>
           </form>
         </div>
