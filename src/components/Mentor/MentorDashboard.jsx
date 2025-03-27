@@ -91,13 +91,15 @@ function MentorDashboard() {
     fetchData();
   }, [currentUser, userRole, searchParams, setSearchParams]);
 
-  const handleLeaveAction = async (applicationId, status) => {
+  const handleLeaveAction = async (id, status) => {
     try {
-      const appRef = doc(db, 'leaveApplications', applicationId);
+      console.log('applicationid', id);
+      const appRef = doc(db, 'leaveApplications', id);
       await updateDoc(appRef, { status });
+      console.log(appRef);
       setLeaveApplications((prev) =>
         prev.map((app) =>
-          app.id === applicationId ? { ...app, status } : app
+          app.id === appRef.id ? { ...app, status } : app
         )
       );
     } catch (error) {

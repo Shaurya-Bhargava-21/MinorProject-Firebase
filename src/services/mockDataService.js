@@ -242,7 +242,6 @@ export const getLeaveApplicationsForMentee = async (menteeId) => {
 export const submitLeaveApplication = async (application) => {
   const newApplication = {
     ...application,
-    id: `la${(await getDocs(collection(db, 'leaveApplications'))).docs.length + 1}`,
     status: 'pending',
     appliedOn: new Date().toISOString().split('T')[0],
   };
