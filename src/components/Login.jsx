@@ -51,7 +51,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h2>Mentor-Mentee Management System</h2>
+        <h2>MeantEazy</h2>
 
         {error && <div className="alert error">{error}</div>}
 
@@ -94,7 +94,7 @@ function Login() {
           <ul>
             <li>Mentor: mentor@example.com / password</li>
             <li>Admin: admin@example.com / password</li>
-            <li>Student: student@example.com / password</li>
+            <li>Mentee: mentee@example.com / password</li>
           </ul>
         </div>
       </div>
@@ -103,3 +103,4 @@ function Login() {
 }
 
 export default Login;
+

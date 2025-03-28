@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import Navbar from '../common/Navbar';
+import ChatList from '../common/ChatList';
+import ChatWindow from '../common/ChatWindow';
 import './menteeDashboard.css';
 
 function MenteeDashboard() {
@@ -13,6 +15,7 @@ function MenteeDashboard() {
   const [mentorData, setMentorData] = useState(null);
   const [leaveApplications, setLeaveApplications] = useState([]);
   const [chats, setChats] = useState([]);
+  const [selectedChat, setSelectedChat] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -27,16 +30,23 @@ function MenteeDashboard() {
           const menteeSnap = await getDoc(menteeRef);
           if (menteeSnap.exists()) {
             setMenteeData({ id: menteeSnap.id, ...menteeSnap.data() });
+
+            if (menteeSnap.data().mentorId) {
+              const mentorRef = doc(db, 'mentors', menteeSnap.data().mentorId);
+              const mentorSnap = await getDoc(mentorRef);
+              if (mentorSnap.exists()) {
+                setMentorData({
+                  name: mentorSnap.data().name || 'N/A',
+                  phone: mentorSnap.data().phone || 'N/A'
+                });
+              } else {
+                setMentorData(null);
+              }
+            } else {
+              setMentorData(null);
+            }
           } else {
             throw new Error('Mentee profile not found.');
-          }
-
-          if (menteeSnap.data().mentorId) {
-            const mentorRef = doc(db, 'mentors', menteeSnap.data().mentorId);
-            const mentorSnap = await getDoc(mentorRef);
-            if (mentorSnap.exists()) {
-              setMentorData({ id: mentorSnap.id, ...mentorSnap.data() });
-            }
           }
 
           const leaveQuery = query(
@@ -84,20 +94,19 @@ function MenteeDashboard() {
             <p>Attendance: {menteeData.attendance}%</p>
           </div>
         )}
-        {mentorData && (
+        {mentorData ? (
           <div>
             <h3>Your Mentor</h3>
             <p>Name: {mentorData.name}</p>
-            <p>Department: {mentorData.department}</p>
+            <p>Contact Number: {mentorData.phone}</p>
           </div>
+        ) : (
+          <p>No mentor assigned.</p>
         )}
 
         <div>
           <h3>Your Leave Applications</h3>
-
-          <div className="leave-application-button">
-            <button onClick={handleApplyLeaveClick} className="btn btn-primary">Apply for Leave</button>
-          </div>
+          <button onClick={handleApplyLeaveClick} className="btn btn-primary">Apply for Leave</button>
           {leaveApplications.length === 0 ? (
             <p>No leave applications.</p>
           ) : (
@@ -124,19 +133,20 @@ function MenteeDashboard() {
           )}
         </div>
 
-        <div>
+        <div className="chat-section">
           <h3>Chats</h3>
-          {chats.length === 0 ? (
-            <p>No chats available.</p>
-          ) : (
-            <ul>
-              {chats.map((chat) => (
-                <li key={chat.id}>
-                  Chat with {chat.participants.filter((p) => p !== currentUser.uid).join(', ')}
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="chat-container">
+            <ChatList
+              chats={chats}
+              onSelectChat={setSelectedChat}
+              currentUser={currentUser}
+            />
+            {selectedChat ? (
+              <ChatWindow selectedChat={selectedChat} currentUser={currentUser} />
+            ) : (
+              <div className="chat-placeholder">Select a chat to start messaging</div>
+            )}
+          </div>
         </div>
       </div>
     </div>

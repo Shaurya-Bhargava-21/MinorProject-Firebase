@@ -1,0 +1,21 @@
+[debug] [2025-03-28T06:33:10.572Z] ----------------------------------------------------------------------
+[debug] [2025-03-28T06:33:10.575Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\KIIT\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-03-28T06:33:10.575Z] CLI Version:   14.0.0
+[debug] [2025-03-28T06:33:10.575Z] Platform:      win32
+[debug] [2025-03-28T06:33:10.575Z] Node Version:  v21.7.0
+[debug] [2025-03-28T06:33:10.575Z] Time:          Fri Mar 28 2025 12:03:10 GMT+0530 (India Standard Time)
+[debug] [2025-03-28T06:33:10.575Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-03-28T06:33:10.583Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-03-28T06:33:10.583Z] > authorizing via signed-in user (eng.shaurya@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\KIIT\Desktop\MinorProjectFirbase\MinorProject-Firebase
+
